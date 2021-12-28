@@ -2,4 +2,5 @@ rootProject.name = 'advanced'
 
 include 'proxy'
 include 'firstproject'
+include 'aop'
 
