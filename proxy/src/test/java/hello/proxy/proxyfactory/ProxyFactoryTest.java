@@ -34,7 +34,7 @@ public class ProxyFactoryTest {
     }
 
     @Test
-    @DisplayName("구체 클래스만 있으면 JDK 동적 프록시 사용")
+    @DisplayName("구체 클래스만 있으면 CGLIB 사용")
     void concreteProxy() {
         ConcreteService target = new ConcreteService();
         ProxyFactory proxyFactory = new ProxyFactory(target);
@@ -66,5 +66,16 @@ public class ProxyFactoryTest {
         assertThat(AopUtils.isAopProxy(proxy)).isTrue();
         assertThat(AopUtils.isJdkDynamicProxy(proxy)).isFalse();
         assertThat(AopUtils.isCglibProxy(proxy)).isTrue();
+        /**
+         * 인터페이스가 아닌 클래스 기반의 프록시를 만들어 준다.
+         */
     }
 }
+
+/**
+ * 인터페이스가 있는 경우 -> JDK 동적 프록시
+ * 구체 클레스만 있는 경우 -> CGLIB
+ *
+ * 스프링 부트는 AOP를 적용할 때 인터페이스가 있어도 항상 CGLIB를 사용해서 구체클래스를 기반으로 프록시를 생성.
+ *
+ */
