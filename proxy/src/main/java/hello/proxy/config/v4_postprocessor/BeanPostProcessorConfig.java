@@ -32,3 +32,9 @@ public class BeanPostProcessorConfig {
         return new DefaultPointcutAdvisor(pointcut, advice);
     }
 }
+
+/**
+ * 포인트컷은 다음 두 곳에서 사용된다.
+ * 1. 프록시 적용 대상 여부를 체크해서 꼭 필요한 곳에만 프록시를 적용한다.(빈 후처리기 - 자동 프록시 생성)
+ * 2. 프록시의 어떤 메서드가 호출 되었을 때 어드바이스를 적용할 지 판단한다. (프록시 내부)
+ */
