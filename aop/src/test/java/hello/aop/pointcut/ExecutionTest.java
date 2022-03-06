@@ -23,6 +23,11 @@ public class ExecutionTest {
         helloMethod = MemberServiceImpl.class.getMethod("hello", String.class);
     }
 
+    /**
+     * execution(접근제어자? 반환타입 선언타입?메서드이름(파라미터) 예외?)
+     * 선언타입 = 패키지명 + 클래스명
+     */
+
     @Test
     void printMethod() {
         log.info("helloMethod={}", helloMethod);
